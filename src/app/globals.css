@@ -1,0 +1,115 @@
+@import "tailwindcss";
+
+/* Do not scan SQLite / binary upload folders — Turbopack panics on locked .db-shm files. */
+@source not "../../data";
+@source not "../../.next";
+
+:root {
+  --ivory: #fbf4e5;
+  --paper: #fffdf8;
+  --ink: #302410;
+  --cocoa: #302410;
+  --gold: #eba52d;
+  --gold-deep: #c98a1f;
+  --sand: #f0e4d0;
+  --line: #e8dcc8;
+  --muted: #6b5a45;
+  --warm-white: #fffdf8;
+  --espresso: #302410;
+}
+
+@theme inline {
+  --color-ivory: var(--ivory);
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+  --color-cocoa: var(--cocoa);
+  --color-gold: var(--gold);
+  --color-gold-deep: var(--gold-deep);
+  --color-sand: var(--sand);
+  --color-line: var(--line);
+  --color-muted: var(--muted);
+  --color-warm-white: var(--warm-white);
+  --color-espresso: var(--espresso);
+  --font-sans: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-cormorant), "Times New Roman", serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--ivory);
+  color: var(--ink);
+  font-family: var(--font-sans);
+}
+
+::selection {
+  background: #f0d9a8;
+  color: var(--ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
+dialog {
+  max-width: none;
+  max-height: none;
+  border: 0;
+  padding: 0;
+  color: var(--ink);
+  background: var(--paper);
+}
+
+dialog::backdrop {
+  background: rgba(48, 36, 16, 0.5);
+}
+
+dialog.drawer {
+  width: min(28rem, 100vw);
+  height: 100dvh;
+  margin: 0 0 0 auto;
+}
+
+dialog.sheet {
+  width: min(36rem, calc(100vw - 2rem));
+  margin: auto;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.rise {
+  animation: rise 0.7s ease both;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  margin: 0;
+  -webkit-appearance: none;
+}
+
+input[type="number"] {
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .rise {
+    animation: none;
+  }
+}
